@@ -1,5 +1,5 @@
 ---
-title: "myfirstpage"
+title: "R 정리"
 category:
   - R
 tag:
