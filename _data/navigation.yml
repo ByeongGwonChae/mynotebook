@@ -6,8 +6,8 @@ main:
     url: https://mmistakes.github.io/minimal-mistakes/about/
   - title: "R 정리"
     url: /r/
-  - title: "markup"
-    url: /Markup/
+  - title: "카테고리"
+    url: /Categories/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
