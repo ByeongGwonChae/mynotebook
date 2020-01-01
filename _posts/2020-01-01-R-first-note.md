@@ -1,5 +1,5 @@
 ---
-title: "R 정리"
+title: "R 기초정리"
 category:
   - R
 tag:

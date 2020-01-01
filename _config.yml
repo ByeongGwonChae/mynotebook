@@ -17,7 +17,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 locale                   : "ko-KR"
 title                    : "채's 정리 블로그"
-title_separator          : "-꺄륵-"
+title_separator          : "|"
 subtitle                 : "현재 R 공부 중"
 name                     : "채병권"
 description              : "이것저것 하고싶은게 많았지만 일단 블로그를 만들고 싶었다"
