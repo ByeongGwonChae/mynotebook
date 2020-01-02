@@ -33,8 +33,8 @@ TRUE, T는 모두 참값을 말한다. FALSE, F 는 거짓을 말한다.
 좀 더 엄밀히 말하면 TRUE와 FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다. 따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능하다! 반면 TRUE에는 FALSE를 할당할 수 없다.
 
 ~~~ R
-T <- FALSE
-TRUE <- FALSE
+> T <- FALSE
+> TRUE <- FALSE
 ~~~
   > T <- FALSE
   > TRUE <- FALSE
