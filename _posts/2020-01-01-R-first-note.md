@@ -51,9 +51,9 @@ NOT연산자 : !\\
 ~~~
 또한 &&, || 는 short-circuit을 지원한다.[^3]
 # 3. 요인(Factor)
-__범주형(Categorical) 변수__ 를 위한 데이터 타입.
-  Factor변수는 nlevels()로 범주의 수를 구할 수 있고, levels()로 범주 목록을 알 수 있다.
-  ~~~ R
+__범주형(Categorical) 변수__ 를 위한 데이터 타입.\\
+Factor변수는 nlevels()로 범주의 수를 구할 수 있고, levels()로 범주 목록을 알 수 있다.
+~~~ R
 > (sex <- factor("m", c("m", "f")))
 [1] m
 Levels: m f
