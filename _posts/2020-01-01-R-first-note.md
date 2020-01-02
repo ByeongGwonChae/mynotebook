@@ -28,10 +28,8 @@ NULL은 NULL객체를 뜻하는데, 변수가 초기화 되지 않은 경우 등
 R은 C 등의 언어에서 볼 수 있는 한개 문자에 대한 데이터 타입은 없다. 대신 문자열로 모든 것을 처리한다.<br>
 문자열은 ‘this is string’ 또는 “this is string” 과 같이 어느 따옴표로 묶어도 된다.
         1. ### 진리값
-- TRUE, T는 모두 참값을 말한다.
-        - FALSE, F 는 거짓을 말한다.
-- 진리값에는 & (AND), | (OR), ! (NOT) 연산자를 사용할 수 있다.
-좀 더 엄밀히 말하면 TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.<br>
+1) TRUE, T는 모두 참값을 말한다.  FALSE, F 는 거짓을 말한다.
+좀 더 엄밀히 말하면 TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.  
 따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능하다! 반면 TRUE에는 FALSE를 할당할 수 없다.
 ~~~ R
 > T <- FALSE
@@ -39,14 +37,20 @@ R은 C 등의 언어에서 볼 수 있는 한개 문자에 대한 데이터 타�
 > TRUE <- FALSE
 Error in TRUE <- FALSE : invalid ( do _ set ) left - hand side to assignment
 ~~~
-AND나 OR연산자에는 &, | 외에도 &&와 || 가 있다. 이들의 차이점은 &, |는 boolean이 저장된 벡터(Vector)끼리의 연산시 각 원소간 계산을 한다는 점이다.
+2) 진리값에는 AND, OR, NOT 연산자가 있다.  
+AND연산자 : &, &&  
+OR연산자 : |, ||  
+NOT연산자 : !  
+이들의 차이점은 &, &&는 boolean이 저장된 벡터(Vector)끼리의 연산시 각 원소간 계산을 한다는 점이다.
 ~~~ R
 > c(TRUE, TRUE) & c(TRUE, FALSE)
 [1] TRUE FALSE
 ~~~
 반면 && 은 벡터의 요소간 계산을하기 위함이 아니라 TRUE && TRUE 등의 경우와 같이 한개의 boolean 값끼리의 연산을 하기 위한 연산자이다. 이는 ||와 |도 마찬가지이다. 예를들어 다음 코드를 보면 한개의 값만 반환됨을 볼 수 있다.
-  > c ( TRUE , FALSE ) & & c ( TRUE , FALSE )
-  [1] TRUE
+~~~ R
+> c(TRUE, FALSE ) && c(TRUE, FALSE)
+[1] TRUE
+~~~
 또 &&, || 는 short-circuit을 지원한다. 따라서 A && B형태의 코드가 있을때 A가 만약 TRUE라면 B도 평가하지만 A가 FALSE라면 B를 평가하지 않는다.
 언뜻보기에는 && 나 ||를 더 많이 사용해야할 것 같지만, R에서는 벡터 또는 리스트내 원소를 한번에 비교하는 연산이 많으므로 오히려 &나 |가 더 유용하다.
 
