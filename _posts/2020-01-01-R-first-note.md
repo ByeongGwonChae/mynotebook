@@ -31,15 +31,18 @@ R은 C 등의 언어에서 볼 수 있는 한개 문자에 대한 데이터 타�
 -TRUE, T는 모두 참값을 말한다.
 -FALSE, F 는 거짓을 말한다.
 -진리값에는 & (AND), | (OR), ! (NOT) 연산자를 사용할 수 있다.
-좀 더 엄밀히 말하면 TRUE와 FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다. 따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능하다! 반면 TRUE에는 FALSE를 할당할 수 없다.
+좀 더 엄밀히 말하면 TRUE와 FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.<br>
+따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능하다! 반면 TRUE에는 FALSE를 할당할 수 없다.
 ~~~ R
 > T <- FALSE
 > TRUE <- FALSE
 Error in TRUE <- FALSE : invalid ( do _ set ) left - hand side to assignment
 ~~~
 AND나 OR연산자에는 &, | 외에도 &&와 || 가 있다. 이들의 차이점은 &, |는 boolean이 저장된 벡터(Vector)끼리의 연산시 각 원소간 계산을 한다는 점이다.
-  > c ( TRUE , TRUE ) & c ( TRUE , FALSE )
-  [1] TRUE FALSE
+~~~ R
+c ( TRUE , TRUE ) & c ( TRUE , FALSE )
+[1] TRUE FALSE
+~~~
 반면 && 은 벡터의 요소간 계산을하기 위함이 아니라 TRUE && TRUE 등의 경우와 같이 한개의 boolean 값끼리의 연산을 하기 위한 연산자이다. 이는 ||와 |도 마찬가지이다. 예를들어 다음 코드를 보면 한개의 값만 반환됨을 볼 수 있다.
   > c ( TRUE , FALSE ) & & c ( TRUE , FALSE )
   [1] TRUE
