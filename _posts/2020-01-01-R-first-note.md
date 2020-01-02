@@ -37,7 +37,7 @@ Error in TRUE <- FALSE : 대입에 유효하지 않은 (do_set) 좌변입니다
 ~~~
 __2) 논리연산자에는 AND, OR, NOT 3가지가 있다.__\\
 
-| Tables        | Are           | Cool  |
+| AND연산자 | OR연산자 | NOT연산자 |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
