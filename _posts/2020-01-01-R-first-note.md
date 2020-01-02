@@ -31,7 +31,8 @@ R은 C 등의 언어에서 볼 수 있는 한개 문자에 대한 데이터 타�
           - TRUE, T는 모두 참값을 말한다.
           - FALSE, F 는 거짓을 말한다.
           - 진리값에는 & (AND), | (OR), ! (NOT) 연산자를 사용할 수 있다.
-<br>좀 더 엄밀히 말하면 TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.<br>
+<br><br>
+좀 더 엄밀히 말하면 TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.<br>
 따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능하다! 반면 TRUE에는 FALSE를 할당할 수 없다.
 ~~~ R
 > T <- FALSE
