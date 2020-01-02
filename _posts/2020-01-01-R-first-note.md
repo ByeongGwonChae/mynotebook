@@ -5,10 +5,10 @@ category:
 tag:
   - note
 ---
-* 목차
+1. 목차
 {:toc}
 
-# 데이터타입
+# 1. 데이터타입
 1 변수
 첫글자는 문자 또는 ‘.’ 으로 시작해야한다.
 변수에 값을 할당할때는 <- 또는 <<- 또는 = 를 사용한다. =는 경우에 따라 사용될 수 없는 경우가 있다.
@@ -31,6 +31,11 @@ R은 C 등의 언어에서 볼 수 있는 한개 문자에 대한 데이터 타�
 TRUE, T는 모두 참값을 말한다. FALSE, F 는 거짓을 말한다.
 진리값에는 & (AND), | (OR), ! (NOT) 연산자를 사용할 수 있다.
 좀 더 엄밀히 말하면 TRUE와 FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다. 따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능하다! 반면 TRUE에는 FALSE를 할당할 수 없다.
+
+~~~ R
+T <- FALSE
+TRUE <- FALSE
+~~~
   > T <- FALSE
   > TRUE <- FALSE
   Error in TRUE <- FALSE : invalid ( do _ set ) left - hand side to assignment
