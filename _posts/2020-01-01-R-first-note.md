@@ -27,9 +27,9 @@ is.na() 함수로 확인할 수 있다
   R은 C 등의 언어에서 볼 수 있는 한개 문자에 대한 데이터 타입은 없다. 대신 문자열로 모든 것을 처리한다.
   문자열은 ‘this is string’ 또는 “this is string” 과 같이 어느 따옴표로 묶어도 된다.
 ## 2.5 진리값
-  __1) TRUE, T는 모두 참값을 말한다.  FALSE, F 는 거짓을 말한다.__
-  좀 더 엄밀히 말하면 TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.
-  따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능한 반면 TRUE에는 FALSE를 할당할 수 없다.
+  __1) TRUE, T는 모두 참값을 말한다. FALSE, F 는 거짓을 말한다.__
+\\좀 더 엄밀히 말하면 TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.
+\\따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능한 반면 TRUE에는 FALSE를 할당할 수 없다.
   ~~~ R
 > (T <- FALSE)
 [1] FALSE
