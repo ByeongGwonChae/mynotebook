@@ -55,19 +55,18 @@ __범주형(Categorical) 변수__ 를 위한 데이터 타입.
 > (sex <- factor("m", c("m", "f"))) #factor 선언
 [1] m
 Levels: m f
-> nlevels(sex)  #범주의 수 확인
+> nlevels(sex)  #범주의 수 확인하는 법
 [1] 2
-> levels(sex)  #범주 목록 확인
+> levels(sex)  #범주 목록 확인하는 법
 [1] "m" "f"
-> sex[1]
-[1] m
-Levels: m f
 > levels(sex)[1]
 [1] "m"
+> levels(sex)[2]
+[1] "f"
 ~~~
-level의 값을 수정하는 법 : levels()에 직접 값을 할당해야한다.
+ : levels()에 직접 값을 할당해야한다.
 ~~~ R
-> (levels(sex) <- c('male', 'female'))
+> (levels(sex) <- c('male', 'female')) #level의 값을 수정하는 법
 [1] "male"   "female"
 ~~~
 factor()는 기본적으로 데이터에 순서가 없는 명목형(Nominal) 변수를 만든다.
