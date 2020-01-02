@@ -5,34 +5,7 @@ category:
 tag:
   - note
 ---
-5 배치 실행
-데이터 분석은 R 명령어를 인터렉티브 환경에서 실행하면되지만, 데이터 분석을 장시간 수행해야한다거나 반복적인 작업을 종종 해야한다면 배치파일을 만들 수 있다. 다음은 Rscript를 사용해 코드를 .R 파일에 저장하고 배치로 실행하는 예이다.
-$ cat > x.R
-# ! / usr / bin / env Rscript
-print ( " hello " )
-^ D
-
-$ chmod u + x x.R
-$ . / x.R
-[1] " hello "
-
-
-또는 R코드를 .R 확장자의 파일에 저장한뒤 다른 R 스크립트에서 source(“파일명.R”) 형태로 실행할 수도 있다. 이를 활용해 데이터 로딩은 data load.R에 구현하고, 데이터 분석은 data analysis.R에 저장한뒤 main.R을 다음과 같이 구성할 수 있다.
-source ( " data _ load.R " )
-source ( " data _ analysis.R " )
-
-6. 패키지의 사용
-install.packages(“패키지명”)
-update.packages(“패키지명”)
-update.packages() - (인자없이) 입력하면 설치된 패키지들을 확인해 최신 버젼을 설치해준다.
-library(패키지명)
-require(페키지명)
-
-Vignette는 http://cran.r-project.org/web/packages/caret/index.html
-
-
-
-
+{:toc}
 
 1 변수
 첫글자는 문자 또는 ‘.’ 으로 시작해야한다.
