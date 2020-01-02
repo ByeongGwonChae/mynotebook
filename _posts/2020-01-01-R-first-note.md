@@ -36,14 +36,12 @@ TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 �
 Error in TRUE <- FALSE : 대입에 유효하지 않은 (do_set) 좌변입니다
 ~~~
 __2) 논리연산자에는 AND, OR, NOT 3가지가 있다.__\\
-<div>
 ┌ AND연산자 - && , &\\
 ├ OR연산자 - || , |\\
 └ NOT연산자 - !\\
 &&와 &는 같은 AND연산자지만 벡터끼리의 연산에서는 차이점이 있다.[^2]\\
-┌ &는 벡터의 각 원소간 AND연산을 한다.\\
-└ &&은 벡터의 맨 앞의 원소만 AND연산을 한다.
-</div>
+┌ &는 벡터의 각 요소들 전부 AND연산을 한다.\\
+└ &&은 벡터의 맨 앞의 요소들만 AND연산을 한다.
 ~~~ R
 > c(TRUE, FALSE, TRUE) & c(TRUE, FALSE, FALSE)
 [1] TRUE FALSE FALSE
@@ -52,15 +50,14 @@ __2) 논리연산자에는 AND, OR, NOT 3가지가 있다.__\\
 ~~~
 또한 &&, || 는 short-circuit을 지원한다.[^3]
 # 2. 요인(Factor)
-__범주형(Categorical) 변수__ 를 위한 데이터 타입.\\
-Factor변수는 nlevels()로 범주의 수를 구할 수 있고, levels()로 범주 목록을 알 수 있다.
+__범주형(Categorical) 변수__ 를 위한 데이터 타입.
 ~~~ R
-> (sex <- factor("m", c("m", "f")))
+> (sex <- factor("m", c("m", "f"))) #factor 선언
 [1] m
 Levels: m f
-> nlevels(sex)  #범주의 수 리턴
+> nlevels(sex)  #범주의 수 확인
 [1] 2
-> levels(sex)  #범주 목록 리턴
+> levels(sex)  #범주 목록 확인
 [1] "m" "f"
 > sex[1]
 [1] m
@@ -74,7 +71,7 @@ level의 값을 수정하는 법 : levels()에 직접 값을 할당해야한다.
 [1] "male"   "female"
 ~~~
 factor()는 기본적으로 데이터에 순서가 없는 명목형(Nominal) 변수를 만든다.
-  범주형 데이터를 순서형(Ordinal) 변수로 만들기 : ordered()를 사용하거나 factor() 호출시 ordered=TRUE를 지정해준다.
+범주형 데이터를 순서형(Ordinal) 변수로 만들기 : ordered()를 사용하거나 factor() 호출시 ordered=TRUE를 지정해준다.
   ~~~ R
 > c('a','b','c')
 [1] "a" "b" "c"
@@ -88,7 +85,6 @@ Levels: a < b < c
 [1] a b c
 Levels: a < b < c
 ~~~
-앞서와 달리 Levels에 순서가 < 로 표시되어있음을 볼 수 있다.
 # 3. 벡터(Vector)
 ## 3.1. 벡터의 정의
   벡터는 다른 프로그래밍 언어에서 흔히 보는 배열의 개념으로, 다음과 같이 c() 안에 원하는 인자들을 나열하여 정의한다.
