@@ -47,7 +47,6 @@ NOT연산자 : !
 ~~~ R
 >  c(TRUE, FALSE, TRUE) & c(TRUE, FALSE, FALSE)
 [1]  TRUE FALSE FALSE
-
 >  c(TRUE, FALSE, TRUE) && c(TRUE, FALSE, FALSE)
 [1] TRUE
 ~~~
@@ -77,7 +76,6 @@ factor()는 기본적으로 데이터에 순서가 없는 명목형 변수(Nomin
 ~~~ R
 > c('a','b','c')
 [1] "a" "b" "c"
-
 > ordered(c('a','b','c'))
 [1] a b c
 Levels: a < b < c
