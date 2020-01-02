@@ -28,20 +28,22 @@ NULL은 NULL객체를 뜻하는데, 변수가 초기화 되지 않은 경우 등
 R은 C 등의 언어에서 볼 수 있는 한개 문자에 대한 데이터 타입은 없다. 대신 문자열로 모든 것을 처리한다.<br>
 문자열은 ‘this is string’ 또는 “this is string” 과 같이 어느 따옴표로 묶어도 된다.
         1. ### 진리값
-*1) TRUE, T는 모두 참값을 말한다.  FALSE, F 는 거짓을 말한다.*  
+_1) TRUE, T는 모두 참값을 말한다.  FALSE, F 는 거짓을 말한다._  
 좀 더 엄밀히 말하면 TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 초기화된 전역 변수이다.  
-따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능하다! 반면 TRUE에는 FALSE를 할당할 수 없다.
+따라서 다음과 같이 T에 FALSE를 할당하는 것이 가능한 반면 TRUE에는 FALSE를 할당할 수 없다.
 ~~~ R
-> T <- FALSE
+> (T <- FALSE)
 [1] FALSE
-> TRUE <- FALSE
-Error in TRUE <- FALSE : invalid ( do _ set ) left - hand side to assignment
+> (TRUE <- FALSE)
+Error in TRUE <- FALSE : 대입에 유효하지 않은 (do_set) 좌변입니다
 ~~~
-*2) 논리연산자에는 AND, OR, NOT 가 있다.*  
+_2) 논리연산자에는 AND, OR, NOT 3가지가 있다._  
 AND연산자 : &&, &  
 OR연산자 : ||, |  
 NOT연산자 : !  
-이들의 차이점은 &, &&는 boolean이 저장된 벡터(Vector)끼리의 연산시 각 원소간 계산을 한다는 점이다.
+&&와 &는 같은 AND연산자지만 boolean이 저장된 벡터끼리의 연산에서는 차이점이 있다.[^2]
+&는 벡터의 각 원소간 AND연산을 한다.  
+반면 &&은 벡터의 맨 앞의 원소만 AND연산을 한다.
 ~~~ R
 >  c(TRUE, FALSE, TRUE) & c(TRUE, FALSE, FALSE)
 [1]  TRUE FALSE FALSE
@@ -49,36 +51,44 @@ NOT연산자 : !
 >  c(TRUE, FALSE, TRUE) && c(TRUE, FALSE, FALSE)
 [1] TRUE
 ~~~
-c(boolean, FALSE, FALSE)이 FALSE인 이유[^2]
-반면 && 은 벡터의 요소간 계산을하기 위함이 아니라 TRUE && TRUE 등의 경우와 같이 한개의 boolean 값끼리의 연산을 하기 위한 연산자이다. 이는 ||와 |도 마찬가지이다. 예를들어 다음 코드를 보면 한개의 값만 반환됨을 볼 수 있다.
-또 &&, || 는 short-circuit을 지원한다. 따라서 A && B형태의 코드가 있을때 A가 만약 TRUE라면 B도 평가하지만 A가 FALSE라면 B를 평가하지 않는다.
-
-2.6 요인(Factor)
-범주형(Categorical) 변수를 위한 데이터 타입
-  > sex <- factor ( " m " , c ( " m " , " f " ) )
+또한 &&, || 는 short-circuit을 지원한다.[^3]
+    1. 요인(Factor)
+_범주형(Categorical) 변수_ 를 위한 데이터 타입.  
 Factor 변수는 nlevels()로 범주의 수를 구할 수 있고, levels()로 범주 목록을 알 수 있다.
-  > nlevels ( sex )
-  [1] 2
-  > levels ( sex )
-  [1] " m " " f "
-  > levels ( sex ) [1]
-  [1] " m "
-  > levels ( sex ) [2]
-  [1] " f "
-Factor 변수에서 level의 값을 직접적으로 수정하고자한다면 levels()에 값을 할당하면 된다
-  > levels ( sex ) <- c ('male ', 'female ')
+~~~ R
+> (sex <- factor("m", c("m", "f")))
+[1] m
+Levels: m f
+> nlevels(sex)
+[1] 2
+> levels(sex)
+[1] "m" "f"
+> levels(sex)[1]
+[1] "m"
+> levels(sex)[2]
+[1] "f"
+~~~
+Factor 변수에서 level의 값을 직접적으로 수정하고자한다면 levels()에 값을 할당하면 된다.
+~~~ R
+> (levels(sex) <- c('male', 'female'))
+[1] "male"   "female"
+~~~
 factor()는 기본적으로 데이터에 순서가 없는 명목형 변수(Nominal)를 만든다. 만약 범주형 데이터지만 ‘나쁨, 조금 나쁨, 보통, 조금 좋음, 아주 좋음’ 등과 같이 순서가 있는 값일 경우는 순서형(Ordinal) 변수로 만들기 위해 ordered()를 사용하거나 factor() 호출시 ordered=TRUE를 지정해준다.
-  > ordered(c("a","b","c"))
-  [1] a b c
-  Levels : a < b < c
-  > factor(c("a","b","c"), ordered=TRUE)
-  [1] a b c
-  Levels : a < b < c
+~~~ R
+> c('a','b','c')
+[1] "a" "b" "c"
+
+> ordered(c('a','b','c'))
+[1] a b c
+Levels: a < b < c
+> factor(c('a','b','c'), ordered=TRUE)
+[1] a b c
+Levels: a < b < c
+~~~
 앞서와 달리 Levels에 순서가 < 로 표시되어있음을 볼 수 있다.
 
-
-3 벡터(Vector)
-3.1 벡터의 정의
+    1. 벡터(Vector)
+        1. 벡터의 정의
 벡터는 다른 프로그래밍 언어에서 흔히 보는 배열의 개념으로, 다음과 같이 c() 안에 원하는 인자들을 나열하여 정의한다.
   > x <- c (1 , 2 , 3 , 4 , 5)
 나열하는 인자들은 한가지 유형의 스칼라 타입이어야한다. 만약 다른 타입의 데이터를 섞어서 벡터에 저장하면 이들 데이터는 한가지 타입으로 자동 형변환 된다.
@@ -320,5 +330,7 @@ seq len()은 N값이 인자로 주어지면 1, 2, ..., N으로 구성된 벡터�
     > x <- c ( " m " , " f " )
     > as.factor ( x )
     > as.numeric ( as.factor ( x ) )
-
+**
 [^1]: =는 경우에 따라 사용될 수 없는 경우가 있다.
+[^2]: 이는 ||와 |도 마찬가지이다.
+[^3]: 따라서 A && B형태의 코드가 있을때 A가 만약 TRUE라면 B도 평가하지만 A가 FALSE라면 B를 평가하지 않는다.
