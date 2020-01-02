@@ -4,9 +4,9 @@ category:
   - R
 tag:
   - note
+toc: true
 ---
-* 목차
-{:toc}
+
 
 * # 변수
 첫글자는 문자 또는 ‘.’ 으로 시작해야한다.<br>
