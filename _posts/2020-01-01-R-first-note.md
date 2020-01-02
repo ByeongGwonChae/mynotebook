@@ -36,11 +36,13 @@ TRUE, FALSE는 예약어(reserved words)이며 T, F는 각각 TRUE와 FALSE로 �
 Error in TRUE <- FALSE : 대입에 유효하지 않은 (do_set) 좌변입니다
 ~~~
 __2) 논리연산자에는 AND, OR, NOT 3가지가 있다.__\\
+
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
+
 \\
 &&와 &는 같은 AND연산자지만 boolean이 저장된 벡터끼리의 연산에서는 차이점이 있다.[^2]\\
 &는 벡터의 각 원소간 AND연산을 한다.\\
