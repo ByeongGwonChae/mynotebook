@@ -66,10 +66,8 @@ Levels: m f
 > (levels(sex) <- c('male', 'female'))  #level의 값을 수정하는 법
 [1] "male"   "female"
 ~~~
-factor()는 기본적으로 데이터에 순서가 없는 명목형(Nominal) 변수를 만든다.
-범주형 데이터를 순서형(Ordinal) 변수로 만들기 : ordered()를 사용하거나 factor() 호출시 ordered=TRUE를 지정해준다.
 ~~~ R
-> factor(c('a','b','c'))  #명목형(Nominal) Factor
+> factor(c('a','b','c'))  #factor()는 기본적으로 명목형(Nominal) Factor를 만든다.
 [1] a b c
 Levels: a b c
 > factor(c('a','b','c'), ordered=TRUE)  #순서형(Ordinal) Factor 만드는 법
