@@ -5,7 +5,7 @@ category:
 tag:
   - note
 toc: true
-toc_float: true
+toc_sticky: true
 ---
 
 # 변수
