@@ -1,5 +1,5 @@
 ---
-title: "R 기초정리"
+title: "R 데이터 타입 정리"
 category:
   - R
 tag:
