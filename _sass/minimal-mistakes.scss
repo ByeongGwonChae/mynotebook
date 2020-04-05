@@ -43,7 +43,7 @@
   margin-top:0;
 }
 
-.page__content {
+.page__content:not(aside) {
   counter-reset: h1
 }
 
@@ -59,13 +59,21 @@
   counter-reset: h4
 }
 
+.page__content h4 {
+  counter-reset: h5
+}
+
+.page__content h5 {
+  counter-reset: h6
+}
+
 .page__content h1:before {
   counter-increment: h1;
   content: counter(h1) ". "
 }
 
 .page__content h2:before {
-    counter-increment: h2;
+  counter-increment: h2;
   content: counter(h1) "." counter(h2) ". "
 }
 
@@ -77,4 +85,14 @@
 .page__content h4:before {
   counter-increment: h4;
   content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+
+.page__content h5:before {
+  counter-increment: h5;
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". " counter(h5) ". "
+}
+
+.page__content h6:before {
+  counter-increment: h6;
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". " counter(h5) ". " counter(h6) ". "
 }
