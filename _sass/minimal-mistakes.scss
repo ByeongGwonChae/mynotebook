@@ -47,23 +47,23 @@
   counter-reset: h1
 }
 
-.page__content h1 {
+.page__content h1:not(aside) {
   counter-reset: h2
 }
 
-.page__content h2 {
+.page__content h2:not(aside) {
   counter-reset: h3
 }
 
-.page__content h3 {
+.page__content h3:not(aside) {
   counter-reset: h4
 }
 
-.page__content h4 {
+.page__content h4:not(aside) {
   counter-reset: h5
 }
 
-.page__content h5 {
+.page__content h5:not(aside) {
   counter-reset: h6
 }
 
