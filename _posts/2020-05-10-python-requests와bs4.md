@@ -20,14 +20,12 @@ toc_sticky: true
 # 참고 사이트
 
 - requests 문서 : https://requests.readthedocs.io/en/master/user/quickstart/
-- Requests 연습용 사이트 : https://httpbin.org
+- requests 연습용 사이트 : https://httpbin.org
 - bs4 문서 : https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 
 # reqeusts
 
-## 요청(Request) 
-
-## 기초
+## 기본적인 요청(Request)
 
 ```python
 import requests
@@ -79,10 +77,10 @@ with open(filename, 'wb') as fd:
 #Response.iter_content는 gzip과 deflate로 자동으로 디코딩해주는데, Response.raw는 그냥 bytes의 스트림이다.
 ```
 
-## Request 헤더
+## 헤더 수정
 
 ```python
-# 요청 header 변조
+# 요청 header 수정
 r=request.get('https://byeonggwonchae.github.io/?key=value', header={'user-agent': 'my-app/0.0.1'})
 
 # 응답 header 확인
@@ -90,17 +88,17 @@ r.request.headers # Request 헤더
 r.headers         # Response 헤더
 ```
 
-## Request 쿠키
+## 쿠키 수정
 
 ```python
- # 쿠키 생성/수정
+# 쿠키 생성/수정
 r = requests.get('https://httpbin.org/cookies', cookies=dict(cookies_are='working'))
 
 # 쿠키 확인
 r.cookies
 ```
 
-## Request 세션
+## 세션 연결
 
 ```python
 with requests.Session() as s:
@@ -109,27 +107,30 @@ with requests.Session() as s:
 
 Session 객체는 requests api의 모든 메소드를 가지고 있어서 특별한 사용법은 없다.
 
+
+
 # BeautifulSoup
 
-## 기초
+## 기본적인 사용법
 
 ```python
 ## 가장 기본
 import requests
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 
 r = requests.get('https://byeonggwonchae.github.io/')
 soup = BeautifulSoup(req.text, 'html.parser')  # html을 파싱
-print(soup.prettify())  #알기 쉽게 보여줌
+print(soup.prettify())  # 알기 쉽게 보여줌
 ```
 
-`soup.prettify()` 는 출력용이라서, 미리 findall 등 원하는 부분을 찾고 마지막에 `soup.prettify()`를 해줘야 한다.
+`soup.prettify()` 는 출력용이라서, 검색, 수정 등을 한 후 마지막에 사용해줘야 한다.
 
 ## 트리 탐색
 
-jquery처럼 선택할 수 있다.
+`soup = BeautifulSoup(req.text, 'html.parser')` 로 만들어진 soup는<br>
+jquery처럼 하위 요소들을 선택할 수 있다.
 
-### .content와 .children
+### 자손 선택
 
 선택한 태그의 바로 밑의 자손들을 선택한다.
 
@@ -147,7 +148,7 @@ print(soup.html.contents)
 print(soup.html.children)
 ```
 
-### .descendants
+### 후손 선택 (모든 하위 요소)
 
 바로 밑의 자손뿐만 아니라 모든 하위 요소(후손)를 선택한다.
 
@@ -156,28 +157,7 @@ print(len(list(soup.html.children)))
 print(len(list(soup.html.descendants)))
 ```
 
-### .string
-
-선택한 태그의 텍스트 추출
-
-선택한 태그가 2개 이상의 텍스트를 포함한다면 None을 출력한다.
-
-```python
-print(soup.title.string)
-```
-
-### .strings와 stripped_strings
-
-둘 다 2개 이상의 텍스트를 추출할 때 사용한다.
-
-stripped_strings는 문자열의 맨앞/맨뒤의 공백을 없앤다.
-
-```python
-for string in soup.strings:
-    print(repr(string))
-```
-
-### .parent 와 .parents
+### 부모 선택
 
 - .parent : 바로 위의 부모 선택
 - .parents : 모든 부모 선택
@@ -190,7 +170,9 @@ for parent in soup.html.body.div.parents:
         print(parent.name)
 ```
 
-### .next_sibling 와 .previous_sibling
+### 형제 선택
+
+형제 요소를 선택한다.
 
 - .next_sibling 와 .previous_sibling
 - .next_siblings 와 .previous_siblings
@@ -202,7 +184,7 @@ for sibling in soup.title.next_siblings:
     print(repr(sibling))
 ```
 
-### .next_element 와 .previous_element
+### 형제 선택 (형제의 자손까지 검색)
 
 - .next_element and .previous_element
 - .next_elements and .previous_elements
@@ -215,7 +197,32 @@ for element in last_a_tag.next_elements:
     print(repr(element))
 ```
 
-## 검색 명령어들
+### 텍스트 추출
+
+- .string
+
+선택한 태그의 텍스트를 추출한다.
+
+선택한 태그가 2개 이상의 텍스트를 포함한다면 None을 출력한다.
+
+```python
+print(soup.title.string)
+```
+
+- .strings와 stripped_strings
+
+둘 다 2개 이상의 텍스트를 추출할 때 사용한다.
+
+stripped_strings는 문자열의 맨앞/맨뒤의 공백을 없앤다.
+
+```python
+for string in soup.strings:
+    print(repr(string))
+```
+
+## Method로 검색 
+
+트리 탐색만으로 원하는 부분을 얻기가 힘들 경우, 검색 method들을 사용하는 편이 간단하다.
 
 대부분 find()와 find_all() 을 사용한다.
 
@@ -231,7 +238,7 @@ find_all(name, attrs, recursive, string, limit, **kwargs)
 soup.find_all("title")
 ```
 
-2. 속성으로 검색
+1. 속성으로 검색
 
 id, name, class, 기타 등등 검색이 가능하다.
 
@@ -241,7 +248,7 @@ soup.find_all(attrs={"id":True})        # id속성을 가진 모든 태그를 �
 soup.find_all("a", attrs={"class": "sister"})
 ```
 
-3. 텍스트로 검색
+1. 텍스트로 검색
 
 ```python
 soup.find_all(string="Elsie")
@@ -249,7 +256,7 @@ soup.find_all(string=["Tillie", "Elsie", "Lacie"])
 soup.find_all(string=re.compile("Dormouse"))
 ```
 
-4. 기타
+1. 기타
 
 ```python
 # limit 파라미터는 검색 결과가 아무리 많아도, 정해진 수만큼만 출력한다.
@@ -262,7 +269,6 @@ soup.html.find_all("title", recursive=False)  # []
 # find_all()은 다음과 같이 사용할 수도 있다. 다음 두 명령어는 동일하다.
 soup.find_all("a")  #모든 a태그 검색
 soup("a")           #모든 a태그 검색
-
 ```
 
 ### 그외 명령어들
