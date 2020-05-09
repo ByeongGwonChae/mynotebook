@@ -232,14 +232,13 @@ for string in soup.strings:
 find_all(name, attrs, recursive, string, limit, **kwargs)
 ```
 
-1. 태그명으로 검색
+1) 태그명으로 검색
 
 ```python
 soup.find_all("title")
 ```
 
-1. 속성으로 검색
-
+2) 속성으로 검색<br>
 id, name, class, 기타 등등 검색이 가능하다.
 
 ```python
@@ -248,7 +247,7 @@ soup.find_all(attrs={"id":True})        # id속성을 가진 모든 태그를 �
 soup.find_all("a", attrs={"class": "sister"})
 ```
 
-1. 텍스트로 검색
+3) 텍스트로 검색
 
 ```python
 soup.find_all(string="Elsie")
@@ -256,7 +255,7 @@ soup.find_all(string=["Tillie", "Elsie", "Lacie"])
 soup.find_all(string=re.compile("Dormouse"))
 ```
 
-1. 기타
+4) 기타
 
 ```python
 # limit 파라미터는 검색 결과가 아무리 많아도, 정해진 수만큼만 출력한다.
