@@ -272,7 +272,7 @@ soup("a")           #모든 a태그 검색
 
 ### 그외 명령어들
 
-1. find()
+1) find()
 
 기본적으로 find_all()과 같지만 오직 하나만 검색한다.
 
@@ -282,8 +282,7 @@ soup.find_all('a', limit=1)
 soup.find('a')
 ```
 
-2. 기타 method들
-
+2) 기타 method들<br>
 다음 10개의 method들은 findall()과 비슷하게 사용가능하므로, 따로 살펴보진 않았다.
 
 |find_parents() 와 find_parent()|
@@ -292,8 +291,7 @@ soup.find('a')
 |find_all_next() 와 find_next()|
 |find_all_previous() 와 find_previous()|
 
-3. select()
-
+3) select()<br>
 역할은 find_all() 와 비슷하지만, CSS 선택자처럼 검색할 수 있다.
 
 ```python
@@ -302,7 +300,7 @@ soup.select("head > title")
 
 ## 변경
 
-1. 태그명, 속성 변경
+- 태그명, 속성 변경
 
 ```python
 soup = BeautifulSoup('<b class="boldest">Extremely bold</b>')
@@ -318,25 +316,31 @@ del tag['class']  # 속성 삭제
 del tag['id']
 ```
 
-2. 기타 명령어들 
+- 기타 명령어들 
 
 |append()|선택한 태그 내부의 끝부분에 내용 추가|
 |extend()|append()와 용도는 같지만, python의 list처럼 사용 가능|
 |insert()|append()와 비슷하지만, 텍스트가 여러 개일 경우 추가할 위치를 선택할 수 있다.|
 |insert_before() and insert_after()|태그or텍스트를 선택한 태그의 처음/끝 을 선택해서 추가할 수 있다.<br>(insert_after()는 appned()와 비슷하다)|
 
+<br>
+
 |new_tag()|새로운 태그 추가|
 |clear()|태그안의 모든 내용 삭제|
+
+<br>
 
 |extract()|선택한 태그를 트리에서 삭제하고, 그 내용을 리턴한다.|
 |decompose()|extract()처럼 태그를 트리에서 삭제하지만, 그 내용은 완전히 사라진다.|
 |replace_with()|태그나 문자열을 트리에서 삭제하고, 그 자리를 다른 태그/문자열로 채운다.|
 
+<br>
+
 |wrap()|선택한 태그의 앞뒤를 새로운 태그로 감싼다.|
 |unwrap()|wrap()의 반대. 선택한 태그를 삭제하고 내용만 남긴다.|
 |smooth()|트리를 여러 번 변조하다보면 문자열 객체(NavigableString)가 2번 이상 붙여질 수 있는데,<br>이 객체들을 하나의 NavigableString 객체로 만들어준다.|
 
-3. new_tag() 예제
+- new_tag() 예제
 
 ```python
 soup = BeautifulSoup("<b></b>")
@@ -345,3 +349,11 @@ original_tag = soup.b
 new_tag = soup.new_tag("a", href="http://www.example.com")
 original_tag.append(new_tag)
 ```
+
+## 출력
+
+출력 결과는 여러가지 형태로 만들 수 있다.
+
+1. `soup.prettify()` : 멋진 형식으로 만들어서 출력한다. (unicode로 출력됨)
+1. `str(soup)` 또는 `unicode(soup)` : 형식은 없지만 unicode로 출력한다.
+1. `soup.encode(formatter="html")` : “&amp;”, “&lt;”, “&gt;” 같은 특수문자들을 어떻게 출력할지 지정할 수 있다. formatter 파라미터에는 `minimal`, `html`, `html5`, `None` 등이 입력 가능하다.
