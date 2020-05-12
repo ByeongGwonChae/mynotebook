@@ -220,6 +220,12 @@ for string in soup.strings:
     print(repr(string))
 ```
 
+### 선택한 태그의 속성 출력
+
+```python
+print(soup.a.attr['href'])
+```
+
 ## Method로 검색 
 
 트리 탐색만으로 원하는 부분을 얻기가 힘들 경우, 검색 method들을 사용하는 편이 간단하다.
@@ -283,7 +289,7 @@ soup.find('a')
 ```
 
 2) 기타 method들<br>
-다음 10개의 method들은 findall()과 비슷하게 사용가능하므로, 따로 살펴보진 않았다.
+다음 10개의 method들은 find_all()과 비슷하게 사용가능하므로, 따로 살펴보진 않았다.
 
 |find_parents() 와 find_parent()|
 |find_next_siblings() 와 find_next_sibling()|
