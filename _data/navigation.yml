@@ -1,13 +1,11 @@
 # main links
 main:
-  - title: "R 정리"
-    url: /r/
-  - title: "토막지식"
-    url: /knowledge/
   - title: "카테고리"
     url: /categories/
   - title: "태그"
     url: /tags/
+  - title: "토막지식"
+    url: /knowledge/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
