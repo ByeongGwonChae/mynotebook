@@ -1,5 +1,5 @@
 ---
-title: "numpy 기초"
+title: "tensorflow-데이터셋"
 category:
   - tensorflow
 tag:
